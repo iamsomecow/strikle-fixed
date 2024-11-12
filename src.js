@@ -26,7 +26,7 @@ fetch(url)
 
 function check_if_word_exists(word) {
     
-        if(dictonaryData[word[0] + word[1]].includes(word){
+        if(dictonaryData[word[0] + word[1]].includes(word)){
             console.log("Success");
             processGuess(word.toUpperCase());
         } else{
