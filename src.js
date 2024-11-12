@@ -2,20 +2,34 @@ var boxes = [];
 var curGuess = 0;
 var victoryAudio = new Audio("which_side_are_you_on.mp3");
 const word = "LABOR";
+let dictonaryData;
+const url = 'https://raw.githubusercontent.com/Brandons42/word-exists/refs/heads/master/dictionary.json';
+
+// Fetch the JSON data
+fetch(url)
+  .then(response => {
+    // Check if the request was successful
+    if (!response.ok) {
+      throw new Error('Network response was not ok ' + response.statusText);
+    }
+    // Parse the JSON data
+    return response.json();
+  })
+  .then(data => {
+    // Use the JSON data
+    dictonaryData = data;
+  })
+  .catch(error => {
+    // Handle any errors
+    console.error('There was a problem with the fetch operation:', error);
+  });
 
 function check_if_word_exists(word) {
-    const url = "https://api.dictionaryapi.dev/api/v2/entries/en/" + word;
-
-    let exists = 1;
-
-    $.ajax({
-        type: "GET",
-        url: url,
-        success: function(data){
+    
+        if(dictonaryData.(word[0] + word[1]).includes(word){
             console.log("Success");
             processGuess(word.toUpperCase());
-        },
-        error: function(){
+        } else{
             console.log("error");
             error(word + " is an invalid word");
         }
