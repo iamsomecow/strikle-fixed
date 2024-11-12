@@ -33,7 +33,7 @@ function check_if_word_exists(word) {
             console.log("error");
             error(word + " is an invalid word");
         }
-    })
+    }
 
     // return exists;
 }
