@@ -3,10 +3,11 @@ var curGuess = 0;
 var victoryAudio = new Audio("which_side_are_you_on.mp3");
 const word = "LABOR";
 let dictonaryData;
-const url = 'https://raw.githubusercontent.com/Brandons42/word-exists/refs/heads/master/dictionary.json';
+const url1 = 'https://raw.githubusercontent.com/Brandons42/word-exists/refs/heads/master/dictionary.json';
+const url2 = 'https://random-word-api.herokuapp.com/word?length=5';
 
 // Fetch the JSON data
-fetch(url)
+fetch(url1)
   .then(response => {
     // Check if the request was successful
     if (!response.ok) {
@@ -23,7 +24,23 @@ fetch(url)
     // Handle any errors
     console.error('There was a problem with the fetch operation:', error);
   });
-
+fetch(url2)
+  .then(response => {
+    // Check if the request was successful
+    if (!response.ok) {
+      throw new Error('Network response was not ok ' + response.statusText);
+    }
+    // Parse the JSON data
+    return response.json();
+  })
+  .then(data => {
+    // Use the JSON data
+    word = data[0];
+  })
+  .catch(error => {
+    // Handle any errors
+    console.error('There was a problem with the fetch operation:', error);
+  });
 function check_if_word_exists(word) {
     
         if(dictonaryData[word[0] + word[1]].includes(word)){
