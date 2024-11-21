@@ -36,6 +36,7 @@ fetch(url2)
   .then(data => {
     // Use the JSON data
     word = data[0];
+	  console.log(word);
   })
   .catch(error => {
     // Handle any errors
