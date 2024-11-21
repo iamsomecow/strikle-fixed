@@ -1,7 +1,7 @@
 var boxes = [];
 var curGuess = 0;
 var victoryAudio = new Audio("which_side_are_you_on.mp3");
-const word = "LABOR";
+let word = "LABOR";
 let dictonaryData;
 const url1 = 'https://raw.githubusercontent.com/Brandons42/word-exists/refs/heads/master/dictionary.json';
 const url2 = 'https://random-word-api.herokuapp.com/word?length=5';
