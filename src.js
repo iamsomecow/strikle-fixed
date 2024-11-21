@@ -35,7 +35,7 @@ fetch(url2)
   })
   .then(data => {
     // Use the JSON data
-    word = data[0];
+    word = data[0].toUpperCase();
 	  console.log(word);
   })
   .catch(error => {
