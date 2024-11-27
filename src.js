@@ -4,8 +4,13 @@ var victoryAudio = new Audio("which_side_are_you_on.mp3");
 let word = "LABOR";
 let dictonaryData;
 const url1 = 'https://raw.githubusercontent.com/Brandons42/word-exists/refs/heads/master/dictionary.json';
-const url2 = 'https://random-word-api.herokuapp.com/word?length=5';
-
+const url2 = 'words.json';
+function getDayOfYear(date) {
+    const start = new Date(date.getFullYear(), 0, 1); // January 1st of the given year
+    const diff = date - start; // Difference in milliseconds
+    const oneDay = 1000 * 60 * 60 * 24; // Milliseconds in one day
+    return Math.floor(diff / oneDay); // Convert to days and add 1 to start from day 1
+}
 // Fetch the JSON data
 fetch(url1)
   .then(response => {
@@ -35,7 +40,7 @@ fetch(url2)
   })
   .then(data => {
     // Use the JSON data
-    word = data[0].toUpperCase();
+    word = data[getDayOfYear(new Date()].toUpperCase();
 	  console.log(word);
   })
   .catch(error => {
