@@ -8,7 +8,7 @@ if (localStorage.getItem('nameid') !== null){
 	} else {
 	var nameid;
 	
-const url = `https://keepthescore.com/api/${editToken}/players/`;
+const url = `https://keepthescore.com/api/board/${editToken}/players/`;
 
 const playerData = {
   name: prompt('set name for leaderboards'),
@@ -46,7 +46,7 @@ function getDayOfYear(date) {
     return Math.floor(diff / oneDay); // Convert to days and add 1 to start from day 1
 }
 function setScore(updateData) {
-	const url = `https://keepthescore.com/api/${editToken}/players/${nameid}/`;
+	const url = `https://keepthescore.com/api/board/${editToken}/players/${nameid}/`;
 
 fetch(url, {
   method: 'PATCH',
@@ -64,7 +64,7 @@ fetch(url, {
 });
 }
 function incScore() {
-	const url = `https://keepthescore.com/api/${editToken}/players/${nameid}/`;
+	const url = `https://keepthescore.com/api/board/${editToken}/players/${nameid}/`;
 
 // Fetch the current score
 fetch(url)
