@@ -1,8 +1,42 @@
 var boxes = [];
 var curGuess = 0;
-var victoryAudio = new Audio("which_side_are_you_on.mp3");
-let word = "LABOR";
+let word = "";
 let dictonaryData;
+const editToken = 'rvmdccmlcgkze'; // Replace with your actual edit token
+if (localStorage.getItem('nameid') !== null){
+	var nameid = localStorage.getItem('nameid');
+	} else {
+	var nameid;
+	
+const url = `https://keepthescore.com/api/${editToken}/players/`;
+
+const playerData = {
+  name: prompt('set name for leaderboards'),
+  score: 0
+};
+
+fetch(url, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(playerData)
+})
+.then(response => response.json())
+.then(data => {
+  console.log('Player created:', data);
+  console.log('Player ID:', data.id); // Log the player ID
+  nameid = data.id;
+  localStorage.setitem('nameid', nameid)
+  
+  
+})
+.catch(error => {
+  console.error('Error:', error);
+});
+	}
+
+
 const url1 = 'https://raw.githubusercontent.com/Brandons42/word-exists/refs/heads/master/dictionary.json';
 const url2 = 'words.json';
 function getDayOfYear(date) {
@@ -10,6 +44,50 @@ function getDayOfYear(date) {
     const diff = date - start; // Difference in milliseconds
     const oneDay = 1000 * 60 * 60 * 24; // Milliseconds in one day
     return Math.floor(diff / oneDay); // Convert to days and add 1 to start from day 1
+}
+function setScore(updateData) {
+	const url = `https://keepthescore.com/api/${editToken}/players/${nameid}/`;
+
+fetch(url, {
+  method: 'PATCH',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(updateData)
+})
+.then(response => response.json())
+.then(data => {
+  console.log('Player score set to ' + upadateData.score + ':', data);
+})
+.catch(error => {
+  console.error('Error:', error);
+});
+}
+function incScore() {
+	const url = `https://keepthescore.com/api/${editToken}/players/${nameid}/`;
+
+// Fetch the current score
+fetch(url)
+.then(response => response.json())
+.then(player => {
+  const newScore = player.score + 1; // Increment the score by 1
+
+  // Update the player's score
+  return fetch(url, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ score: newScore })
+  });
+})
+.then(response => response.json())
+.then(data => {
+  console.log('Player score incremented:', data);
+})
+.catch(error => {
+  console.error('Error:', error);
+});
 }
 // Fetch the JSON data
 fetch(url1)
@@ -132,15 +210,13 @@ function processGuess(guess)
     curGuess++;
     if(correctCount == 5)
     {
-        victoryAudio.pause();
-        victoryAudio.play();
         curGuess = 6;
-        document.getElementById("answer").innerHTML = "<p>Thats right! The word was LABOR. Withholding labor is the strongest negotiating tool workers have! Thank you for supporting NYT workers withholding their labor!</p>";
-        //alert("Thats right! The word was SCABS. We hate them! Thank you for not being one!")
+        document.getElementById("answer").innerHTML = "<p>Thats right! The word was " + word + "</p>";
+	incScore();
     }
     else if(curGuess > 5)
-    document.getElementById('answer').innerHTML =
-			'<p>The word was LABOR. Withholding labor is the strongest negotiating tool workers have! Thank you for supporting NYT workers withholding their labor!</p>';
+    document.getElementById('answer').innerHTML = "<p>The word was " + word + "</p>";
+    setScore({score: 0});
 }
 
 document.addEventListener("keyup", function(event) {
