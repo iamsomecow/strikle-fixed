@@ -119,7 +119,6 @@ fetch(url2)
   .then(data => {
     // Use the JSON data
     word = data[getDayOfYear(new Date())].toUpperCase();
-	  console.log(word);
   })
   .catch(error => {
     // Handle any errors
@@ -189,12 +188,10 @@ function processGuess(guess)
         }
         else if(tempWord.includes(guess[i]))
         {
-            console.log(tempWord);
             for(let k = 0; k < word.length; k++)
             {
                 if(word[k] == guess[i] && word[k] != guess[k])
                 {
-                    console.log("Entered second loop " + guess[i]);
                     box.classList.add("yellow");
                     tempWord = tempWord.replace(guess[i], "");
                     console.log(tempWord);
