@@ -40,7 +40,7 @@ fetch(url2)
   })
   .then(data => {
     // Use the JSON data
-    word = data[getDayOfYear(new Date()].toUpperCase();
+    word = data[getDayOfYear(new Date())].toUpperCase();
 	  console.log(word);
   })
   .catch(error => {
