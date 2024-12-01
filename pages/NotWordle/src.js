@@ -2,7 +2,6 @@ var boxes = [];
 var curGuess = 0;
 let word = "";
 let dictonaryData;
-const url1 = 'https://raw.githubusercontent.com/Brandons42/word-exists/refs/heads/master/dictionary.json';
 const url2 = 'words.json';
 function getDayOfYear(date) {
     const start = new Date(date.getFullYear(), 0, 1); // January 1st of the given year
@@ -12,23 +11,6 @@ function getDayOfYear(date) {
 }
 
 // Fetch the JSON data
-fetch(url1)
-  .then(response => {
-    // Check if the request was successful
-    if (!response.ok) {
-      throw new Error('Network response was not ok ' + response.statusText);
-    }
-    // Parse the JSON data
-    return response.json();
-  })
-  .then(data => {
-    // Use the JSON data
-    dictonaryData = data;
-  })
-  .catch(error => {
-    // Handle any errors
-    console.error('There was a problem with the fetch operation:', error);
-  });
 fetch(url2)
   .then(response => {
     // Check if the request was successful
@@ -40,6 +22,7 @@ fetch(url2)
   })
   .then(data => {
     // Use the JSON data
+    dictonaryData = data;
     word = data[getDayOfYear(new Date())].toUpperCase();
   })
   .catch(error => {
