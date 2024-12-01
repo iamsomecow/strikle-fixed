@@ -84,7 +84,7 @@ function processGuess(guess)
     for(let i = 0; i < guess.length; i++)
     {
         box = boxes[curGuess][i];
-        box.innerHTML = "<h1>" + guess[i] + "</h1>"
+        box.innerHTML = "<h1>" + guess[i].toUpperCase() + "</h1>"
         if(guess[i] == word[i])
         {
             box.classList.add("green");
