@@ -33,7 +33,7 @@ function check_if_word_exists(word) {
     
         if(dictonaryData.includes(word)){
             console.log("Success");
-            processGuess(word.toUpperCase());
+            processGuess(word);
         } else{
             console.log("error");
             error(word + " is an invalid word");
