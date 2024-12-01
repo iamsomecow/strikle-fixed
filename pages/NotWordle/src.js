@@ -23,7 +23,7 @@ fetch(url2)
   .then(data => {
     // Use the JSON data
     dictonaryData = data;
-    word = data[getDayOfYear(new Date())].toUpperCase();
+    word = data[getDayOfYear(new Date())];
   })
   .catch(error => {
     // Handle any errors
@@ -31,7 +31,7 @@ fetch(url2)
   });
 function check_if_word_exists(word) {
     
-        if(dictonaryData[word[0] + word[1]].includes(word)){
+        if(dictonaryData.includes(word)){
             console.log("Success");
             processGuess(word.toUpperCase());
         } else{
