@@ -34,7 +34,7 @@
 		window.location.href = buttons[button.innertext]
   }
   const div = document.createElement('div');
-  Object.entries(buttons).forEach(([key, value]) => {
+  Object.keys(buttons).forEach((key) => {
     var newButton = document.createElement('button');
 	newButton.innertext = key;
 	newButton.setAttribute("onclick","buttonClick(this)");
