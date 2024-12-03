@@ -10,11 +10,6 @@
 	</head>
 	<body>
 		<header>
-			<div>
-				<button onclick="home()">home</button>
-				<button onclick="NotWordle()">NotWordle</button>
-				<button onclick="BlindWordle()">BlindWordle</button>
-			</div>
 			<h1>BigWordle</h1>
 			<p>
 				Wordle but Bigger!
@@ -34,18 +29,39 @@
 
 		<script src="src.js"></script>
 		<script>
-			function home()
-			{
-				window.location.href = "https://iamsomecow.github.io/strikle-fixed";
-			}
-			function NotWordle() 
-			{
-				window.location.href = "https://iamsomecow.github.io/strikle-fixed/pages/NotWordle/NotWordle.html";
-			}
-			function BlindWordle() 
-			{
-				window.location.href = "https://iamsomecow.github.io/strikle-fixed/pages/BlindWordle/BlindWordle.html";
-			}
+			let buttons;
+	fetch("https://iamsomecow.github.io/strikle-fixed/buttons.json")
+  .then(response => {
+    // Check if the request was successful
+    if (!response.ok) {
+      throw new Error('Network response was not ok ' + response.statusText);
+    }
+    // Parse the JSON data
+    return response.json();
+  })
+  .then(data => {
+    // Use the JSON data
+    buttons = data;
+	console.log(buttons);
+  createButtons();
+  })
+  .catch(error => {
+    // Handle any errors
+    console.error('There was a problem with the fetch operation:', error);
+  });
+  function buttonClick(button) {
+		window.location.href = buttons[button.innerHTML]
+  }
+  function createButtons() {
+    const div = document.createElement('div');
+    Object.keys(buttons).forEach((key) => {
+      var newButton = document.createElement('button');
+	    newButton.innerHTML = key;
+	    newButton.setAttribute("onclick","buttonClick(this)");
+	    div.appendChild(newButton);
+    });
+    document.body.insertBefore(div, document.body.firstChild);
+  }
 		</script>
 	</body>
 </html>

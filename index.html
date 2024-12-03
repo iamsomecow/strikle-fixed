@@ -42,7 +42,7 @@
 	    newButton.setAttribute("onclick","buttonClick(this)");
 	    div.appendChild(newButton);
     });
-    document.body.appendChild(div);
+    document.body.insertBefore(div, document.body.firstChild);
   }
   </script>
   </body>

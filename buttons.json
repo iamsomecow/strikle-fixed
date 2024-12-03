@@ -1,4 +1,7 @@
 {
     "Home": "https://iamsomecow.github.io/strikle-fixed/",
-    "NotWordle": "https://iamsomecow.github.io/strikle-fixed/NotWordle/NotWordle.html" 
+    "BigWordle" : "https://iamsomecow.github.io/strikle-fixed/pages/BigWordle/BigWordle.html", 
+    "NotWordle" : "https://iamsomecow.github.io/strikle-fixed/pages/NotWordle/NotWordle.html",
+    "SmallWordle" : "https://iamsomecow.github.io/strikle-fixed/pages/SmallWordle/SmallWordle.html",
+    "BlindWordle" : "https://iamsomecow.github.io/strikle-fixed/pages/BlindWordle/BlindWordle.html"
 }
