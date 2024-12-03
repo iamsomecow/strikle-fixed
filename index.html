@@ -33,10 +33,9 @@
 		window.location.href = buttons[button.innertext].link;
   }
   const div = document.createElement('div');
-  buttons.forEach(button => {
-	
-    var newButton = document.createElement(button.name);
-	newButton.innertext = button.name;
+  Object.entries(jsonObject).forEach(([key, value]) => {
+    var newButton = document.createElement(value);
+	newButton.innertext = value;
 	newButton.setAttribute("onclick","buttonClick(this)");
 	div.appendChild(button);
   });
