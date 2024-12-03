@@ -10,23 +10,36 @@
 	</head>
 	<body> 
   <T>Wordle Games</T>
-  <div>
-	<button onclick="NotWordle()">NotWordle</button>
-	<button onclick="BigWordle()">BigWordle</button>
-	<button onclick="BlindWordle()">BlindWordle</button>
-  </div>
   <script>
-	function NotWordle() 
-	{
-		window.location.href = "https://iamsomecow.github.io/strikle-fixed/pages/NotWordle/NotWordle.html";
-	}
-	function BigWordle() 
-	{
-		window.location.href = "https://iamsomecow.github.io/strikle-fixed/pages/BigWordle/BigWordle.html";
-	}
-	function BlindWordle() 
-	{
-		window.location.href = "https://iamsomecow.github.io/strikle-fixed/pages/BlindWordle/BlindWordle.html";
-	}
+	let buttons;
+	fetch("https://iamsomecow.github.io/strikle-fixed/buttons.json")
+  .then(response => {
+    // Check if the request was successful
+    if (!response.ok) {
+      throw new Error('Network response was not ok ' + response.statusText);
+    }
+    // Parse the JSON data
+    return response.json();
+  })
+  .then(data => {
+    // Use the JSON data
+    buttons = data;
+  })
+  .catch(error => {
+    // Handle any errors
+    console.error('There was a problem with the fetch operation:', error);
+  });
+  function buttonClick(button) {
+		window.location.href = buttons[button.innertext].link;
+  }
+  const div = document.createElement('div');
+  buttons.forEach(button => {
+	
+    var newButton = document.createElement(button.name);
+	newButton.innertext = button.name;
+	newButton.setAttribute("onclick","buttonClick(this)");
+	div.appendChild(button);
+  });
+  document.body.appendChild(div);
   </script>
   </body>
