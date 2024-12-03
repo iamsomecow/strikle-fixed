@@ -1,0 +1,93 @@
+body{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: darkgreen;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+p{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5em;
+    margin: 0 10px 0 10px;
+}
+
+#guesscontainer{
+    display: grid;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    grid-template-rows: repeat(4, 60px);
+    grid-template-columns: repeat(4, 60px);
+}
+
+#guesscontainer h1{
+    color: white;
+}
+
+.letter{
+    border: 1px solid black;
+    border-radius: 3px;
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+
+.green{background-color: green; border: none;}
+.yellow{background-color: yellow; border: none;}
+.gray{background-color: gray; border: none;}
+
+#inputcontainer {
+    padding: 5px;
+}
+
+#answer{
+    margin: auto;
+    max-width: 40rem;
+    padding: 1rem;
+    font-weight:500;
+}
+
+#donation{
+    font-size: 1rem;
+    margin: 1rem;
+}
+
+#donation>p{
+    /* font-weight: 300; */
+    font-size: 1.25rem;
+    font-style: italic;
+}
+
+#donation .button{
+    text-decoration: none;
+    border: 1px solid black;
+    border-radius: 0.25rem;
+    padding: 0.25rem;
+    background: linear-gradient(#FFFFFF, #CCCCCC);
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 10rem;
+    margin: auto;
+}
+
+#donation .button p {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+#donation .button img {
+    max-width: 2rem;
+}
+
+#donation .button:hover{
+    background: linear-gradient(#CCCCCC, #FFFFFF);
+}
