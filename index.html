@@ -33,13 +33,15 @@
   function buttonClick(button) {
 		window.location.href = buttons[button.innertext]
   }
-  const div = document.createElement('div');
-  Object.keys(buttons).forEach((key) => {
-    var newButton = document.createElement('button');
-	newButton.innertext = key;
-	newButton.setAttribute("onclick","buttonClick(this)");
-	div.appendChild(newButton);
-  });
-  document.body.appendChild(div);
+  function createButtons() {
+    const div = document.createElement('div');
+    Object.keys(buttons).forEach((key) => {
+      var newButton = document.createElement('button');
+	    newButton.innertext = key;
+	    newButton.setAttribute("onclick","buttonClick(this)");
+	    div.appendChild(newButton);
+    });
+    document.body.appendChild(div);
+  }
   </script>
   </body>
