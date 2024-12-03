@@ -34,10 +34,10 @@
   }
   const div = document.createElement('div');
   Object.entries(buttons).forEach(([key, value]) => {
-    var newButton = document.createElement(value);
-	newButton.innertext = value;
+    var newButton = document.createElement('button');
+	newButton.innertext = key;
 	newButton.setAttribute("onclick","buttonClick(this)");
-	div.appendChild(button);
+	div.appendChild(newButton);
   });
   document.body.appendChild(div);
   </script>
