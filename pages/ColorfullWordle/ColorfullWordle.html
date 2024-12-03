@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="styles.css" />
+		<link rel="icon" href="https://iamsomecow.github.io/strikle-fixed/favicon.ico" />
+		<title>NotWordle</title>
+	</head>
+	<body>
+		<header>
+			<h1>NotWordle</h1>
+			<p>
+				Wordle but Not!
+				
+			</p>
+		</header>
+		<div id="guesscontainer"></div>
+		<div id="answer"></div>
+		<div id="inputcontainer">
+			<input id="guess" type="text" />
+			<button onclick="submit()">Guess</button>
+		</div>
+		<div id="donation">
+			<p>custom version of wordle</p>
+            </a>
+		</div>
+
+		<script src="src.js"></script>
+		<script>
+			let buttons;
+	fetch("https://iamsomecow.github.io/strikle-fixed/buttons.json")
+  .then(response => {
+    // Check if the request was successful
+    if (!response.ok) {
+      throw new Error('Network response was not ok ' + response.statusText);
+    }
+    // Parse the JSON data
+    return response.json();
+  })
+  .then(data => {
+    // Use the JSON data
+    buttons = data;
+	console.log(buttons);
+  createButtons();
+  })
+  .catch(error => {
+    // Handle any errors
+    console.error('There was a problem with the fetch operation:', error);
+  });
+  function buttonClick(button) {
+		window.location.href = buttons[button.innerHTML]
+  }
+  function createButtons() {
+    const div = document.createElement('div');
+    Object.keys(buttons).forEach((key) => {
+      var newButton = document.createElement('button');
+	    newButton.innerHTML = key;
+	    newButton.setAttribute("onclick","buttonClick(this)");
+	    div.appendChild(newButton);
+    });
+    document.body.insertBefore(div, document.body.firstChild);
+  }
+		</script>
+	</body>
+</html>
