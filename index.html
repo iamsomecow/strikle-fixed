@@ -30,7 +30,7 @@
     console.error('There was a problem with the fetch operation:', error);
   });
   function buttonClick(button) {
-		window.location.href = buttons[button.innertext].link;
+		window.location.href = buttons[button.innertext]
   }
   const div = document.createElement('div');
   Object.entries(buttons).forEach(([key, value]) => {
